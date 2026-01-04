@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurnia Eka Apsari - Portofolio Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#f472b6',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap');
+        
+        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.4s ease, color 0.4s ease; }
+        .font-cursive { font-family: 'Dancing Script', cursive; }
+        
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .dark .glass { background: rgba(15, 23, 42, 0.7); }
+        
+        /* Animasi Kupu-Kupu Latar Belakang */
+        .butterfly-container {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .butterfly {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%233b82f6' d='M24 96c0-13.3 10.7-24 24-24H56.1c25.4 0 49.3 11.9 64.7 32.1L192 192l71.2-93.9c15.4-20.2 39.3-32.1 64.7-32.1H336c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8.1c-8.5 0-16.4 4-21.6 10.7L192 274.7l-114.3-151c-5.1-6.7-13.1-10.7-21.6-10.7H48c-13.3 0-24-10.7-24-24z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            animation: fly 20s linear infinite;
+        }
+
+        @keyframes fly {
+            0% { transform: translate(-10vw, 100vh) rotate(0deg); }
+            100% { transform: translate(110vw, -10vh) rotate(360deg); }
+        }
+
+        /* Animasi Muncul */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Floating Animation */
+        .floating { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Khusus teks sambung bergerak */
+        .moving-text { animation: slideIn 1.5s ease-out forwards; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 overflow-x-hidden">
+
+    <div class="butterfly-container" id="butterfly-box"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <span class="text-xl font-bold font-cursive tracking-tighter text-primary">Kurnia Eka Apsari</span>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#about" class="hover:text-primary transition">Tentang</a>
+                    <a href="#experience" class="hover:text-primary transition">Pengalaman</a>
+                    <a href="#projects" class="hover:text-primary transition">Proyek</a>
+                    <a href="#contact" class="hover:text-primary transition">Kontak</a>
+                </div>
+                <button onclick="toggleDarkMode()" class="p-2 w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition hover:ring-2 ring-primary">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="pt-32 pb-20 px-4">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="moving-text">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                    <span class="font-cursive text-primary text-6xl md:text-8xl block mb-2 floating">Halo, Saya</span>
+                    Kurnia Eka Apsari
+                </h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed text-justify">
+                    Saya mahasiswa Ilmu Komunikasi di Institut Bisnis Muhammadiyah Bekasi. Saya memiliki sifat disiplin, rajin, dan suka belajar hal baru. Pengalaman saya mencakup pelatihan copywriting, Figma UI/UX, Data Science, dan Digital Marketing. Saya mencari tantangan kreatif di bidang SDM, jurnalisme, dan pemasaran digital.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="openModal('certModal')" class="px-8 py-3 bg-primary text-white rounded-full font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
+                        <i class="fas fa-certificate"></i> Klik Sertifikat
+                    </button>
+                    <a href="https://Wa.me/6285932551750" target="_blank" class="px-8 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full font-bold hover:bg-slate-50 transition">Chat WhatsApp</a>
+                </div>
+            </div>
+            <div class="flex justify-center floating" style="animation-delay: 0.5s">
+                <div class="relative group">
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-slate-200 dark:bg-slate-800 rounded-[4rem] overflow-hidden border-8 border-white dark:border-slate-900 shadow-2xl transition-transform duration-700 group-hover:scale-105">
+                        <img src="d:\DATA KURNIA\DOWNLOAD\WhatsApp Image 2025-11-24 at 09.18.40.jpeg" alt="Kurnia Eka" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -z-10 -bottom-6 -right-6 w-full h-full bg-primary/20 rounded-[4rem] rotate-12"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 bg-white dark:bg-slate-900">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center font-cursive text-primary reveal">Pengalaman Berharga</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Magang -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] border dark:border-slate-700 reveal">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-primary uppercase">Maret - Juni 2024</span>
+                        <i class="fas fa-briefcase text-slate-300"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-1">Magang Administrasi Kependudukan</h3>
+                    <p class="text-sm text-slate-500 mb-4">Kelurahan Mustika Jaya Kota Bekasi</p>
+                    <button onclick="openGallery('Magang')" class="text-primary text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        Klik Foto <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- LDK -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] border dark:border-slate-700 reveal">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-primary uppercase">2022 - 2023</span>
+                        <i class="fas fa-users text-slate-300"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-1">Sekretaris 2 LDK Al-Ghazi</h3>
+                    <p class="text-sm text-slate-500 mb-4">IBM Bekasi - Belajar Kepemimpinan & Kerjasama</p>
+                    <button onclick="openGallery('LDK')" class="text-primary text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        Klik Foto <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Lomba Biologi -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] border dark:border-slate-700 reveal">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-primary uppercase">Nov 2022</span>
+                        <i class="fas fa-medal text-yellow-500"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-1">Medali Perak Biologi</h3>
+                    <p class="text-sm text-slate-500 mb-4">Lembaga Kompetensi Nasional (LKN)</p>
+                    <button onclick="openGallery('Lomba')" class="text-primary text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        Klik Foto <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Digital Marketing -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] border dark:border-slate-700 reveal">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-primary uppercase">Juli 2023</span>
+                        <i class="fas fa-laptop-code text-slate-300"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-1">Pelatihan Digital Marketing</h3>
+                    <p class="text-sm text-slate-500 mb-4">Kominfo - BPPTIK Cikarang</p>
+                    <button onclick="openGallery('Kominfo')" class="text-primary text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        Klik Foto <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Webinar Broadcasting -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] border dark:border-slate-700 reveal">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-primary uppercase">Nov 2023</span>
+                        <i class="fas fa-broadcast-tower text-slate-300"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-1">Webinar Broadcasting</h3>
+                    <p class="text-sm text-slate-500 mb-4">Diselenggarakan oleh Trans 7</p>
+                    <button onclick="openGallery('Trans7')" class="text-primary text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        Klik Foto <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Jurnalisme -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] border dark:border-slate-700 reveal">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-primary uppercase">Januari 2022</span>
+                        <i class="fas fa-newspaper text-slate-300"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-1">Penulisan Berita Digital</h3>
+                    <p class="text-sm text-slate-500 mb-4">Penulis di Berita-kota.com</p>
+                    <button onclick="openGallery('Jurnal')" class="text-primary text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        Klik Foto <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+            <div class="reveal">
+                <h2 class="text-3xl font-bold mb-8 font-cursive text-primary">Pendidikan</h2>
+                <div class="space-y-6">
+                    <div class="p-8 bg-gradient-to-br from-primary to-blue-700 text-white rounded-[3rem] shadow-xl relative overflow-hidden">
+                        <i class="fas fa-graduation-cap absolute -bottom-4 -right-4 text-9xl opacity-10"></i>
+                        <h3 class="text-2xl font-bold mb-1">IBM Bekasi</h3>
+                        <p class="opacity-90 italic">S1 Ilmu Komunikasi</p>
+                        <div class="inline-block bg-white/20 px-4 py-1 rounded-full text-xs mt-4 font-bold">Lulusan Berprestasi</div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 rounded-[2rem] border dark:border-slate-800 flex justify-between items-center shadow-sm">
+                        <div>
+                            <h4 class="font-bold">MAN 2 Kota Bekasi</h4>
+                            <p class="text-sm text-slate-500 italic">Ilmu Pengetahuan Sosial (Nilai: 86.00)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <h2 class="text-3xl font-bold mb-8 font-cursive text-primary">Skill & Keahlian</h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="p-6 bg-white dark:bg-slate-900 rounded-[2rem] border dark:border-slate-800">
+                        <h4 class="text-sm font-bold text-primary mb-4 uppercase">Keahlian Teknis</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-bold">Desain</span>
+                            <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-bold">Edit Video</span>
+                            <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-bold">Fotografi</span>
+                            <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-bold">Microsoft Office</span>
+                        </div>
+                        <h4 class="text-sm font-bold text-primary mt-6 mb-4 uppercase">Interpersonal</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-full text-xs font-bold">Komunikasi</span>
+                            <span class="px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-full text-xs font-bold">Kerja Tim</span>
+                            <span class="px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-full text-xs font-bold">Kepemimpinan</span>
+                            <span class="px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-full text-xs font-bold">Berpikir Kreatif</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Visual (Magang & KKN) -->
+    <section id="projects" class="py-20 bg-slate-900 text-white rounded-[4rem] mx-4 overflow-hidden reveal">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4 font-cursive text-primary">Proyek Visual</h2>
+            <p class="text-slate-400 mb-12">Hasil karya lapangan dan kreativitas konten.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="group relative bg-slate-800 rounded-[3rem] p-4 border border-slate-700 transition hover:border-primary">
+                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6">
+                        <img src="c:\Users\USER\Music\magang 1.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-cursive">Proyek Magang</h3>
+                    <button onclick="openGallery('Magang_Detail')" class="px-8 py-3 bg-white text-black rounded-full font-bold hover:bg-primary hover:text-white transition shadow-lg">Klik 5 Foto</button>
+                </div>
+                <div class="group relative bg-slate-800 rounded-[3rem] p-4 border border-slate-700 transition hover:border-primary">
+                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6">
+                        <img src="d:\DATA KURNIA\DOWNLOAD\WhatsApp Image 2026-01-04 at 19.58.13.jpeg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-cursive">Proyek KKN</h3>
+                    <button onclick="openGallery('KKN_Detail')" class="px-8 py-3 bg-white text-black rounded-full font-bold hover:bg-primary hover:text-white transition shadow-lg">Klik 5 Foto</button>
+                </div>
+            </div>
+
+            <!-- Video/Sosmed Links -->
+            <div class="mt-16 p-8 bg-slate-800/50 rounded-[3rem] border border-dashed border-slate-700">
+                <h4 class="text-xl font-bold mb-6 font-cursive">Karya Video & Artikel Digital</h4>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://www.tiktok.com/@akiraisamasuzuina_19?_r=1&_t=ZS-92jLUlwpVE0" target="_blank" class="px-6 py-2 bg-white text-black rounded-full font-bold flex items-center gap-2 hover:scale-105 transition"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="https://Berita-kota.com" target="_blank" class="px-6 py-2 bg-slate-700 text-white rounded-full font-bold flex items-center gap-2 hover:scale-105 transition"><i class="fas fa-globe"></i> Berita-kota.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto text-center reveal">
+            <h2 class="text-5xl font-bold font-cursive text-primary mb-12">Mari Terhubung</h2>
+            <div class="flex flex-wrap justify-center gap-6 mb-16">
+                <a href="https://www.linkedin.com/in/kurnia-eka-apsari-075559269/" target="_blank" class="w-14 h-14 bg-white dark:bg-slate-900 shadow-xl rounded-2xl flex items-center justify-center text-blue-600 hover:-translate-y-2 transition border dark:border-slate-800"><i class="fab fa-linkedin-in text-xl"></i></a>
+                <a href="https://www.instagram.com/akira_isamasu_zuina_16?igsh=dDBwYzVoc2h1cG85" target="_blank" class="w-14 h-14 bg-white dark:bg-slate-900 shadow-xl rounded-2xl flex items-center justify-center text-pink-500 hover:-translate-y-2 transition border dark:border-slate-800"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="mailto:eka23200@gmail.com" class="w-14 h-14 bg-white dark:bg-slate-900 shadow-xl rounded-2xl flex items-center justify-center text-red-500 hover:-translate-y-2 transition border dark:border-slate-800"><i class="fas fa-envelope text-xl"></i></a>
+                <a href="https://github.com/new" target="_blank" class="w-14 h-14 bg-white dark:bg-slate-900 shadow-xl rounded-2xl flex items-center justify-center text-slate-800 dark:text-white hover:-translate-y-2 transition border dark:border-slate-800"><i class="fab fa-github text-xl"></i></a>
+            </div>
+            <p class="text-xs font-bold text-slate-400 tracking-widest uppercase">&copy; 2024 Kurnia Eka Apsari</p>
+        </div>
+    </footer>
+
+    <!-- MODAL SERTIFIKAT -->
+    <div id="certModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-[3rem] overflow-hidden shadow-2xl">
+            <div class="p-8 border-b dark:border-slate-800 flex justify-between items-center">
+                <h3 class="text-2xl font-bold font-cursive text-primary">Koleksi Sertifikat</h3>
+                <button onclick="closeModal('certModal')" class="text-slate-400 hover:text-red-500 transition"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-8 space-y-3 max-h-[60vh] overflow-y-auto">
+                <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border dark:border-slate-700">Digital Marketing - Kominfo</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border dark:border-slate-700">UI/UX Design - Rakamin Academy</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border dark:border-slate-700">Data Science - Sang Sang Surya</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border dark:border-slate-700">Personal Branding - Emtek Group</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL GALERI -->
+    <div id="galleryModal" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-4">
+        <div class="w-full max-w-5xl">
+            <div class="flex justify-between items-center mb-8 px-4">
+                <h3 id="galleryTitle" class="text-2xl font-bold font-cursive text-primary"></h3>
+                <button onclick="closeModal('galleryModal')" class="text-white text-4xl hover:text-primary transition">&times;</button>
+            </div>
+            <div id="galleryContent" class="grid grid-cols-2 md:grid-cols-5 gap-4 px-4"></div>
+        </div>
+    </div>
+
+    <script>
+        // Reveal Animations
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = 'fas fa-moon';
+            } else {
+                html.classList.add('dark');
+                icon.className = 'fas fa-sun';
+            }
+        }
+
+        // Modal Controls
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.getElementById(id).classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Gallery Logic
+        function openGallery(type) {
+            const title = document.getElementById('galleryTitle');
+            const content = document.getElementById('galleryContent');
+            title.innerText = "Galeri " + type;
+            content.innerHTML = "";
+            
+            // Dummy image logic for demo
+            let count = type.includes('Detail') ? 5 : 1;
+            for(let i=1; i<=count; i++) {
+                content.innerHTML += `
+                    <div class="aspect-square bg-slate-800 rounded-2xl overflow-hidden border border-white/20">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=400&sig=${type}${i}" class="w-full h-full object-cover">
+                    </div>
+                `;
+            }
+            openModal('galleryModal');
+        }
+
+        // Butterfly Spawner
+        function createButterflies() {
+            const box = document.getElementById('butterfly-box');
+            for(let i=0; i<10; i++) {
+                const b = document.createElement('div');
+                b.className = 'butterfly';
+                b.style.left = Math.random() * 100 + 'vw';
+                b.style.top = Math.random() * 100 + 'vh';
+                b.style.animationDelay = (Math.random() * 20) + 's';
+                box.appendChild(b);
+            }
+        }
+        createButterflies();
+        reveal(); // Run once on load
+    </script>
+</body>
+</html>
